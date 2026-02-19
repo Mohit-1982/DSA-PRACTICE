@@ -24,4 +24,21 @@ GFG
 }
 
 Optimal : TC O(logn)
+  class Solution {
+    public int kthMissing(int[] arr, int k) {
+        int s = 0;
+        int e = arr.length - 1;
+        int missing = 0;
+        while(s <= e) {
+            int m = s + (e - s) / 2;
+            missing = arr[m] - m - 1;
+            if(missing < k) {
+                s = m + 1;
+            }else {
+                e = m - 1;
+            }
+        }
+        return s + k;
+    }
+}
   
